@@ -1,9 +1,22 @@
 pipeline:
-  docker:
+  docker_hugo:
+    group: build
     image: plugins/docker
     dockerfile: hugo/Dockerfile
     context: hugo
     repo: registry.quan.io/dan/hugo
+    registry: registry.quan.io
+    secrets: [ docker_username, docker_password ]
+    branches: [ master ]
+    tags:
+      - latest
+      - "${DRONE_COMMIT_SHA:0:8}"
+  docker_golang:
+    group: build
+    image: plugins/docker
+    dockerfile: golang-testing/Dockerfile
+    context: golang-testing
+    repo: registry.quan.io/dan/golang-testing
     registry: registry.quan.io
     secrets: [ docker_username, docker_password ]
     branches: [ master ]
