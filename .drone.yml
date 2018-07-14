@@ -1,0 +1,12 @@
+pipeline:
+  docker:
+    image: plugins/docker
+    dockerfile: hugo/Dockerfile
+    context: hugo
+    repo: registry.quan.io/dan/hugo
+    registry: registry.quan.io
+    secrets: [ docker_username, docker_password ]
+    branches: [ master ]
+    tags:
+      - latest
+      - "${DRONE_COMMIT_SHA:0:8}"
