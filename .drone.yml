@@ -23,3 +23,15 @@ pipeline:
     tags:
       - latest
       - "${DRONE_COMMIT_SHA:0:8}"
+  docker_goplayspace:
+    group: build
+    image: plugins/docker
+    dockerfile: go-playspace/Dockerfile
+    context: go-playspace
+    repo: registry.quan.io/dan/go-playspace
+    registry: registry.quan.io
+    secrets: [ docker_username, docker_password ]
+    branches: [ master ]
+    tags:
+      - latest
+      - "${DRONE_COMMIT_SHA:0:8}"
