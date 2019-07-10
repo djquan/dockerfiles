@@ -3,7 +3,7 @@ pipeline:
     group: build
     image: plugins/docker
     dockerfile: tor/Dockerfile
-    context: hugo
+    context: tor
     repo: registry.quan.io/dan/tor
     registry: registry.quan.io
     secrets: [ docker_username, docker_password ]
