@@ -1,0 +1,6 @@
+ORPort 9001
+Nickname arches_tor
+RelayBandwidthRate 800 KBytes  # Throttle traffic to 100KB/s (800Kbps)
+RelayBandwidthBurst 900 KBytes # But allow bursts up to 200KB (1600Kb)
+ContactInfo 100C36132B44344E0815BA9F5A7B86D9F964C49E Dan <dan AT quan dot io>
+Exitpolicy reject *:*
