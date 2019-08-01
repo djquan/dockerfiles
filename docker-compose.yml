@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  hydra:
+    image: linuxserver/hydra2:latest
+    restart: always
+    volumes:
+      - /var/lib/hydra:/config
+    environment:
+      - PGID
+      - PUID
+      - TZ
+    ports:
+      - "5076:5076"
+  teamcity:
+    image: jetbrains/teamcity-server
+    restart: always
+    volumes:
+      - /var/lib/postgresql/data:/var/lib/postgresql/data
+      - /var/lib/teamcity:/data/teamcity_server/datadir
+      - /var/log/teamcity:/opt/teamcity/logs
+      - /secrets:/secrets
+    ports:
+      - "8111:8111"
+  teamcity-agent:
+    image: jetbrains/teamcity-agent
+    privileged: true
+    restart: always
+    volumes:
+      - /var/lib/postgresql/data:/var/lib/postgresql/data
+      - /secrets:/secrets
+      - /var/lib/teamcity-agent:/data/teamcity_agent/conf
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/buildagent/work:/opt/buildagent/work
+      - /opt/buildagent/temp:/opt/buildagent/temp
+      - /opt/buildagent/tools:/opt/buildagent/tools
+      - /opt/buildagent/plugins:/opt/buildagent/plugins
+      - /opt/buildagent/system:/opt/buildagent/system
+    environment:
+      - SERVER_URL=https://ci.quan.io
+      - DOCKER_IN_DOCKER=start
