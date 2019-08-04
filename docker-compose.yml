@@ -1,17 +1,6 @@
 version: '2'
 
 services:
-  hydra:
-    image: linuxserver/hydra2:latest
-    restart: always
-    volumes:
-      - /var/lib/hydra:/config
-    environment:
-      - PGID
-      - PUID
-      - TZ
-    ports:
-      - "5076:5076"
   teamcity:
     image: jetbrains/teamcity-server
     restart: always
