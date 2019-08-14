@@ -1,7 +1,6 @@
 kind: pipeline
 name: default
 
-steps:
 - name: docker  
   image: plugins/docker
   settings:
@@ -11,9 +10,10 @@ steps:
       - "1.9"
       - $DRONE_COMMIT_SHA 
     debug: true
-    dry_run: true
     dockerfile: elixir/Dockerfile
     username:
       from_secret: docker_username
     password:
       from_secret: docker_password
+    registry: reg.quan.io
+
