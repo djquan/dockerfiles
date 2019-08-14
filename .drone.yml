@@ -9,12 +9,10 @@ steps:
     tags:
       - latest
       - "1.9"
-      - $DRONE_COMMIT_SHA 
-    debug: true
+      - ${DRONE_COMMIT_SHA}
     dockerfile: elixir/Dockerfile
     username:
       from_secret: docker_username
     password:
       from_secret: docker_password
     registry: reg.quan.io
-
