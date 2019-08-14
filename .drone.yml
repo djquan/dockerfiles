@@ -1,8 +1,8 @@
 kind: pipeline
-name: default
+name: elixir
 
 steps:
-- name: docker  
+- name: docker - elixir
   image: plugins/docker
   settings:
     repo: reg.quan.io/dan/elixir
@@ -11,6 +11,39 @@ steps:
       - "1.9"
       - ${DRONE_COMMIT_SHA}
     dockerfile: elixir/Dockerfile
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    registry: reg.quan.io
+---
+kind: pipeline
+name: tor
+- name: docker - tor
+  image: plugins/docker
+  settings:
+    repo: reg.quan.io/dan/tor
+    tags:
+      - latest
+      - ${DRONE_COMMIT_SHA}
+    dockerfile: tor/Dockerfile
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    registry: reg.quan.io
+---
+kind: pipeline
+name: golang
+
+- name: docker - golang - testing
+  image: plugins/docker
+  settings:
+    repo: reg.quan.io/dan/golang-testing
+    tags:
+      - latest
+      - ${DRONE_COMMIT_SHA}
+    dockerfile: golang-testing/Dockerfile
     username:
       from_secret: docker_username
     password:
