@@ -19,6 +19,8 @@ steps:
 ---
 kind: pipeline
 name: tor
+
+steps:
 - name: docker - tor
   image: plugins/docker
   settings:
@@ -36,6 +38,7 @@ name: tor
 kind: pipeline
 name: golang
 
+steps:
 - name: docker - golang - testing
   image: plugins/docker
   settings:
