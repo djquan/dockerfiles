@@ -4,6 +4,11 @@ name: elixir
 steps:
 - name: docker - elixir
   image: plugins/docker
+  when:
+    branch:
+      - master
+    event:
+      - push
   settings:
     repo: reg.quan.io/dan/elixir
     tags:
@@ -16,13 +21,13 @@ steps:
     password:
       from_secret: docker_password
     registry: reg.quan.io
----
-kind: pipeline
-name: tor
-
-steps:
 - name: docker - tor
   image: plugins/docker
+  when:
+    branch:
+      - master
+    event:
+      - push
   settings:
     repo: reg.quan.io/dan/tor
     tags:
@@ -35,13 +40,13 @@ steps:
     password:
       from_secret: docker_password
     registry: reg.quan.io
----
-kind: pipeline
-name: golang
-
-steps:
 - name: docker - golang - testing
   image: plugins/docker
+  when:
+    branch:
+      - master
+    event:
+      - push
   settings:
     repo: reg.quan.io/dan/golang-testing
     tags:
