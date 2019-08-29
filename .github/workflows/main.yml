@@ -7,9 +7,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: 
-      - actions/checkout@v1
-      - actions/action-builder/docker@master
+    - uses: actions/checkout@v1
+    - uses: actions/action-builder/docker@master
     - name: Build
       run: make build
 
