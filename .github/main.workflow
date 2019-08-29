@@ -1,9 +1,11 @@
 workflow "Build and Publish" {
-  on = "push"
-  branch = "master"
+  on:
+    push:
+      branches:
+        - "master"
 }
 
-action "Build Dockerfiles" {
+action "Build" " {
   uses = "actions/action-builder/docker@master"
   runs = "make"
   args = "build"
