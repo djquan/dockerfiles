@@ -2,7 +2,7 @@ workflow "Build and Publish" {
   on = "push"
 }
 
-action "Build" " {
+action "Build" {
   uses = "actions/action-builder/docker@master"
   runs = "make"
   args = "build"
