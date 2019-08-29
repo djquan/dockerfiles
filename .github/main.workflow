@@ -1,5 +1,5 @@
 workflow "Build and Publish" {
-  on: "push"
+  on = "push"
 }
 
 action "Build" " {
