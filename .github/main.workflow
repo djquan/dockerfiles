@@ -1,8 +1,5 @@
 workflow "Build and Publish" {
-  on:
-    push:
-      branches:
-        - "master"
+  on: "push"
 }
 
 action "Build" " {
@@ -11,9 +8,14 @@ action "Build" " {
   args = "build"
 }
 
-action "Docker Login" {
+action "Publish Filter" {
   needs = ["Build"]
+  uses = "actions/bin/filter@master"
+  args = "branch master"
+}
+
+action "Docker Login" {
+  needs = ["Publish Filter"]
   uses = "actions/docker/login@master"
   secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD"]
 }
-
