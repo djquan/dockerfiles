@@ -1,0 +1,35 @@
+name: Docker
+on:
+  push:
+    branches:
+      - "master"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  steps:
+    - uses: 
+      - "actions/checkout@v1"
+      - "actions/action-builder/docker@master"
+    - name: Build
+      run: make build
+
+# workflow "Build and Publish" {
+#   on = "push"
+# }
+
+# action "Build" {
+#   runs = "make"
+#   args = "build"
+# }
+
+# action "Publish Filter" {
+#   needs = ["Build"]
+#   uses = "actions/bin/filter@master"
+#   args = "branch master"
+# }
+
+# action "Docker Login" {
+#   needs = ["Publish Filter"]
+#   uses = "actions/docker/login@master"
+#   secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD"]
+# }
