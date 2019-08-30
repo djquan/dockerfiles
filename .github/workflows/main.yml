@@ -8,8 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Build
-      run: make build
+    - name: Build Elixir
+      uses: actions/docker/cli@master
+      args: build -t reg.quan.io/dan/elixir -f elixir/Dockerfile .
     - name: Login
       uses: actions/docker/login@master
       env:
