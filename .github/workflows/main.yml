@@ -11,7 +11,7 @@ jobs:
     - name: Build Elixir
       uses: actions/docker/cli@master
       with:
-        entrypoint: make
+        entrypoint: /usr/bin/make
         args: build
     - name: Login
       uses: actions/docker/login@master
