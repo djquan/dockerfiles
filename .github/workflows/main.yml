@@ -11,7 +11,8 @@ jobs:
     - name: Build Elixir
       uses: actions/docker/cli@master
       with:
-        args: build -t reg.quan.io/dan/elixir:latest -t reg.quan.io/dan/elixir:1.9 -t reg.quan.io/dan/elixir:$GITHUB_SHA -f elixir/Dockerfile .
+        entrypoint: make
+        args: build
     - name: Login
       uses: actions/docker/login@master
       env:

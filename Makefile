@@ -1,2 +1,4 @@
+ELIXIR_IMAGE := reg.quan.io/dan/elixir
+
 build:
-	@echo "hi"
+	@docker build -t ${ELIXIR_IMAGE}:latest -t ${ELIXIR_IMAGE}:1.9 -t ${ELIXIR_IMAGE}:${GITHUB_SHA} -f elixir/Dockerfile .
