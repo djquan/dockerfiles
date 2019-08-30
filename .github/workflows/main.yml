@@ -16,9 +16,9 @@ jobs:
         DOCKER_REGISTRY_URL: reg.quan.io
     - name: Build and Push Elixir
       uses: actions/action-builder/docker@master
-	      with:
-	        entrypoint: make
-	        args: build push
+      with:
+        entrypoint: make
+        args: build push
 
 
 
