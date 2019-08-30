@@ -6,4 +6,4 @@ build:
 push:
 	@docker push ${ELIXIR_IMAGE}:latest
 	@docker push ${ELIXIR_IMAGE}:1.9 
-	@docker push ${ELIXIR_IMAGE}:${GITHUB_SHA} -f elixir/Dockerfile .
+	@docker push ${ELIXIR_IMAGE}:${GITHUB_SHA}
