@@ -10,7 +10,8 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build Elixir
       uses: actions/docker/cli@master
-      args: build -t reg.quan.io/dan/elixir -f elixir/Dockerfile .
+      with:
+        args: build -t reg.quan.io/dan/elixir -f elixir/Dockerfile .
     - name: Login
       uses: actions/docker/login@master
       env:
