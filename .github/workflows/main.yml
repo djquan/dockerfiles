@@ -18,7 +18,7 @@ jobs:
       uses: actions/action-builder/docker@master
       with:
         entrypoint: make
-        args: build push
+        args: build_elixir push_elixir
 
 
 
