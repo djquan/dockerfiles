@@ -2,25 +2,6 @@ kind: pipeline
 name: elixir
 
 steps:
-- name: docker - elixir
-  image: plugins/docker
-  when:
-    branch:
-      - master
-    event:
-      - push
-  settings:
-    repo: reg.quan.io/dan/elixir
-    tags:
-      - latest
-      - "1.9"
-      - ${DRONE_COMMIT_SHA}
-    dockerfile: elixir/Dockerfile
-    username:
-      from_secret: docker_username
-    password:
-      from_secret: docker_password
-    registry: reg.quan.io
 - name: docker - tor
   image: plugins/docker
   when:
