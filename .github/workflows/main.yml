@@ -15,7 +15,10 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         DOCKER_REGISTRY_URL: reg.quan.io
     - name: Build and Push Elixir
-      run: make build push
+      uses: actions/action-builder/docker@master
+	      with:
+	        entrypoint: make
+	        args: build push
 
 
 
