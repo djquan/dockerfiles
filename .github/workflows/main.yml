@@ -9,10 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build Elixir
-      uses: actions/docker/cli@master
-      with:
-        entrypoint: /usr/bin/make
-        args: build
+      run: make build
     - name: Login
       uses: actions/docker/login@master
       env:
