@@ -7,38 +7,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Login
-      uses: actions/docker/login@master
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        DOCKER_REGISTRY_URL: reg.quan.io
-    - name: Build and Push Elixir
-      uses: actions/action-builder/docker@master
-      with:
-        entrypoint: make
-        args: build_elixir push_elixir
-
-
-
-# workflow "Build and Publish" {
-#   on = "push"
-# }
-
-# action "Build" {
-#   runs = "make"
-#   args = "build"
-# }
-
-# action "Publish Filter" {
-#   needs = ["Build"]
-#   uses = "actions/bin/filter@master"
-#   args = "branch master"
-# }
-
-# action "Docker Login" {
-#   needs = ["Publish Filter"]
-#   uses = "actions/docker/login@master"
-#   secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD"]
-# }
+      - uses: actions/checkout@v1
+      - name: Login
+        uses: actions/docker/login@master
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and Push Elixir
+        uses: actions/action-builder/docker@master
+        with:
+          entrypoint: make
+          args: build-elixir push-elixir
